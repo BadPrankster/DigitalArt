@@ -1,0 +1,53 @@
+// Script for the Art Button
+// 09.03.2022
+// Lucas Wirz-Vitiuk
+
+// Include libraries
+#include <BleKeyboard.h>
+BleKeyboard bleKeyboard("Art Button");
+
+// Pin definitions
+const int buttonPin = 23;
+const int shutdownPin = 21;
+
+// Pin-State variable
+boolean oldPinState = LOW;
+
+void setup() {
+  //Start the Serial communication
+  Serial.begin(115200);
+  Serial.println("Art Button started");
+
+  //Initiate bluetooth keyboard
+  bleKeyboard.begin();
+
+  //Initiate Pins
+  pinMode(buttonPin, INPUT_PULLDOWN);
+  pinMode(shutdownPin, INPUT_PULLDOWN);
+}
+
+void loop() {
+  if (bleKeyboard.isConnected()) {
+
+    // Define the Art Button as spacebar
+    if (digitalRead(buttonPin) == HIGH) {
+      if (oldPinState == LOW) {
+        bleKeyboard.print(" ");
+      }
+      oldPinState = HIGH;
+    } else {
+      oldPinState = LOW;
+    }
+
+    // Define shutdown button as 'E'
+    if (digitalRead(shutdownPin) == HIGH) {
+      if (oldPinState == LOW) {
+        bleKeyboard.print("E");
+      }
+      oldPinState = HIGH;
+    } else {
+      oldPinState = LOW;
+    }
+  }
+  delay(50);
+}
