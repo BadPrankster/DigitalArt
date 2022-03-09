@@ -1,4 +1,4 @@
-// Script for the Art Button
+// Script for the ArtButton
 // 09.03.2022
 // Lucas Wirz-Vitiuk
 
@@ -11,7 +11,8 @@ const int buttonPin = 23;
 const int shutdownPin = 21;
 
 // Pin-State variable
-boolean oldPinState = LOW;
+boolean oldPin1State = LOW;
+boolean oldPin2State = LOW;
 
 void setup() {
   //Start the Serial communication
@@ -31,22 +32,22 @@ void loop() {
 
     // Define the Art Button as spacebar
     if (digitalRead(buttonPin) == HIGH) {
-      if (oldPinState == LOW) {
+      if (oldPin1State == LOW) {
         bleKeyboard.print(" ");
       }
-      oldPinState = HIGH;
+      oldPin1State = HIGH;
     } else {
-      oldPinState = LOW;
+      oldPin1State = LOW;
     }
 
     // Define shutdown button as 'E'
     if (digitalRead(shutdownPin) == HIGH) {
-      if (oldPinState == LOW) {
+      if (oldPin2State == LOW) {
         bleKeyboard.print("E");
       }
-      oldPinState = HIGH;
+      oldPin2State = HIGH;
     } else {
-      oldPinState = LOW;
+      oldPin2State = LOW;
     }
   }
   delay(50);
