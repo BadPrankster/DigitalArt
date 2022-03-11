@@ -78,7 +78,7 @@ def create_art():
     # Randomly set HSVA to everything but white (or too bright colours)
     color.hsva = (rnd.randint(0, 360), rnd.randint(50, 100), rnd.randint(50, 100), 100)
 
-    # Draw coloured polygon (random colour from above)
+    # Draw colored polygon (random color from above)
     pygame.draw.polygon(
         screen,
         color,
@@ -134,7 +134,7 @@ GPIO.add_event_detect(breaker, GPIO.RISING, callback=shutdown, bouncetime=500)
 actuator = Servo(servopin, pin_factory=factory)
 time.sleep(0.5)
 
-# Define the screen resolution and the size of the canvas
+# Define the screen resolution and the size of the canvas (considering mat)
 resolution_x, resolution_y = 1280, 1024
 window_x, window_y = 640, 512
 
