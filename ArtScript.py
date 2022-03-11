@@ -75,7 +75,7 @@ def create_art():
 
     # Initiate color
     color = pygame.Color(0, 0, 0)
-    # Randomly set HSVA to everything but white (or too bright colours)
+    # Randomly set HSVA to everything but white (or too bright colors)
     color.hsva = (rnd.randint(0, 360), rnd.randint(50, 100), rnd.randint(50, 100), 100)
 
     # Draw colored polygon (random color from above)
