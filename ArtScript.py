@@ -124,7 +124,7 @@ GPIO.setmode(GPIO.BOARD)
 # Setup pins for buttons and LEDs
 GPIO.setup(switch, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(breaker, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(backgroundlight, GPIO.OUT, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(backgroundlight, GPIO.OUT)
 
 # Setup events for buttons
 GPIO.add_event_detect(switch, GPIO.RISING, callback=endswitch, bouncetime=500)
